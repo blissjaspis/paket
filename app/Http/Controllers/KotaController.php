@@ -14,7 +14,7 @@ class KotaController extends Controller
 
     public function index()
     {
-        return view('kota.index', ['kotas' => Kota::get()]);
+        return view('kota.index', ['kotas' => Kota::latest()->get()]);
     }
 
     public function create()
@@ -28,7 +28,7 @@ class KotaController extends Controller
         $kota->nama = $request->nama_kota;
         $kota->save();
 
-        return redirect()->route('kota.index');
+        return redirect()->route('kota.index')->withSuccess('Berhasil Menambahkan Kota');
     }
 
     public function edit(Kota $kota)
@@ -41,6 +41,6 @@ class KotaController extends Controller
         $kota->nama = $request->nama_kota;
         $kota->save();
 
-        return redirect()->route('kota.index');
+        return redirect()->route('kota.index')->withSuccess('Berhasil Mengupdate Kota');
     }
 }

@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{ $key+1 }}</td>
                         <td>{{ $kota->nama }}</td>
-                        <td>{{ $kota->created_at->formatLocalized('%d %B %Y %r') }}</td>
+                        <td>{{ $kota->created_at->diffForHumans() }}</td>
                         <td>
                             <a href="#">View </a>
                             <a href="{{ route('kota.edit', $kota) }}"> | Edit |</a>

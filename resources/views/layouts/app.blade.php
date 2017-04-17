@@ -81,6 +81,8 @@
         <div class="container">
             @yield('breadcrumb')
 
+            @include('layouts._notification')
+
             <div class="row">
                 <div class="col-sm-3">
                     <!-- Sidebar -->

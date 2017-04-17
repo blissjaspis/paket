@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user.index', ['users' => User::get()]);
+        return view('user.index', ['users' => User::latest()->get()]);
     }
 
     public function create()
@@ -36,7 +36,7 @@ class UserController extends Controller
         $user->kotas()->attach($request->kota);
         $user->save();
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->withSuccess('Berhasil Menambahkan User!');
     }
 
     public function show(User $user)
@@ -61,6 +61,6 @@ class UserController extends Controller
         $user->kotas()->sync([$request->kota]);
 
         $user->save();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->withSuccess('Berhasil Mengupdate User!');
     }
 }

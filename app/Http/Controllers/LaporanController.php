@@ -18,7 +18,11 @@ class LaporanController extends Controller
 
     public function index()
     {
-        return view('laporan.index', ['laporan' => Laporan::get()]);
+        if (request()->user()->hasRole('administrator')) {
+            return view('laporan.index', ['laporan' => Laporan::latest()->get()]);
+        } else {
+            return view('laporan.index', ['laporan' => Laporan::where('user_id', request()->user()->id)->latest()->get()]);
+        }
     }
 
     public function paket(Paket $paket)

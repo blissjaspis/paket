@@ -19,7 +19,7 @@ class PaketController extends Controller
     public function index()
     {
         if (request()->user()->hasRole('administrator')) {
-            $pakets = Paket::get();
+            $pakets = Paket::latest()->get();
             return view('paket.index', compact('pakets'));
         } else {
             $pakets = Paket::userPaket();
@@ -70,9 +70,9 @@ class PaketController extends Controller
                     'jumlah' => $request->jumlah_buku[$key]
                 ]);
             }
-            return redirect()->route('paket.index');
+            return redirect()->route('paket.index')->withSuccess('Berhasil Menambahkan Paket!');
         } catch (Exception $e) {
-            return back();
+            return back()->withError('Gagal Menambahkan Paket!');
         }
     }
 
