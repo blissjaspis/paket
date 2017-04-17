@@ -47,7 +47,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::get();
-        return view('user.edit', compact('user', 'roles'));
+        $kotas = Kota::get();
+        return view('user.edit', compact('user', 'roles', 'kotas'));
     }
 
     public function update(Request $request, User $user)
@@ -57,6 +58,7 @@ class UserController extends Controller
         ! $request->has('password') ?: $user->password = bcrypt($request->password);
 
         $user->syncRoles([$request->role]);
+        $user->kotas()->sync([$request->kota]);
 
         $user->save();
         return redirect()->route('user.index');

@@ -44,6 +44,21 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-2 control-label" for="role">Kota:</label>
+                    <div class="col-sm-10">
+                        <select id="kota" class="form-control" name="kota">
+                            @foreach ($kotas as $kota)
+                                @if (@isset(Auth::user()->kotas->first()->id))
+                                    <option value="{{ $kota->id }}" {{ $kota->id === Auth::user()->kotas->first()->id ? 'selected' : '' }}>{{ $kota->nama }}</option>
+                                @else
+                                    <option value="{{ $kota->id }}">{{ $kota->nama }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-2 control-label" for="password">Password:</label>
                     <div class="col-sm-10">
                         <input type="password" id="password" name="password" class="form-control" placeholder="Isi bila ingin mengganti password">
