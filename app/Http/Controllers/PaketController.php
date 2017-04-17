@@ -58,7 +58,7 @@ class PaketController extends Controller
             $paket = Paket::create([
                 'user_id' => \Auth::user()->id,
                 'kota_id' => $request->kota,
-                'tanggal_kirim' => Carbon::parse($request->tanggal_kirim),
+                'tanggal_kirim' => Carbon::parse($request->tanggal_dikirim),
                 'foto_resi' => $resi,
                 'foto_barang' => $barang
             ]);
