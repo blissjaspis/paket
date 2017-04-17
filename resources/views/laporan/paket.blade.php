@@ -70,6 +70,13 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-2 control-label" for="mobile">No Hp Penerima:</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="mobile" class="form-control" name="mobile">
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-2 control-label" for="status">Status:</label>
                     <div class="col-sm-10">
                         <select id="status" class="form-control" name="status">

@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="kota">Kota:</label>
                     <div class="col-sm-9">
-                        <p class="text-block">{{ $laporan->paket->kota }}</p>
+                        <p class="text-block">{{ $laporan->paket->kota->first()->nama }}</p>
                     </div>
                 </div>
 
@@ -70,6 +70,13 @@
                     <label class="col-sm-3 control-label" for="kota">Tanggal Diterima:</label>
                     <div class="col-sm-9">
                         <p class="text-block">{{ $laporan->tanggal_diterima->formatLocalized('%d %B %Y') }}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="kota">No HP Penerima:</label>
+                    <div class="col-sm-9">
+                        <p class="text-block">{{ isset($laporan->mobile) ? $laporan->mobile : '-' }}</p>
                     </div>
                 </div>
 

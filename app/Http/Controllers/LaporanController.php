@@ -44,6 +44,7 @@ class LaporanController extends Controller
                 'user_id' => \Auth::user()->id,
                 'tanggal_diterima' => Carbon::parse($request->tanggal_diterima),
                 'foto_barang' => $barang,
+                'mobile' => $request->mobile,
                 'keterangan' => $request->keterangan
             ]);
             $paket->status = $request->status;
